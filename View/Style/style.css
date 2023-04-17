@@ -1,0 +1,65 @@
+body {
+  /*Meggátolom, hogy kijelölje a sözveget és képeket*/
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version */
+}
+canvas {
+    border: 1px solid black;    
+}
+.box {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: end;    
+}
+
+.myButton {
+  background-color: #fff;
+  border: 1px solid #ccc; 
+  border-radius: 100%;  
+  height: 110px;
+}
+.myButton:focus {
+  box-shadow: 3px 3px 3px #ccc inset;
+  transform: scale(.9);
+}
+.menu {
+  font-weight: bold;
+  background-color: burlywood;
+  border: 2px solid gold;
+}
+.modal-title {
+  font-weight: bold;
+}
+.menu button {
+  background-color: gold;
+  border-radius: 40px;
+  font-weight: bold;
+}
+.menu button:hover {
+  transform: scale(.98);
+  box-shadow: 3px 3px 3px #fff inset;
+  transition: all .3s;
+}
+.enterTitle {
+  color: #000;
+  text-shadow: 1px 1px #c0c0c0;
+}
+.smallHeight {
+  transform: scale(.86);
+  margin-top: -24px;
+}
+
+#helpBox {
+  overflow: auto;
+  height: 310px;
+}
+.arrow {
+  height: 60px;
+}
+.arrow-touched {
+  background-color: rgba(0, 0, 0,.1);
+  border-radius: 100%;
+}

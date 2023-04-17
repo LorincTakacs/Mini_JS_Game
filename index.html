@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple Platformer Game</title>
+  </head>
+  <!--Plugin CSS-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./View/Style/style.css">
+  
+  <body style="background-color: burlywood;">
+
+
+    <div class="container">
+      <div class="row justify-content-center">    
+        <span class="badge time bg-success col-md-3 mx-2 mt-xl-4 py-1"><h3></h3></span>
+        <span class="badge lvl bg-success col-md-3 mx-2 mt-xl-4 py-1"><h3>Szint: 1</h3></span>
+        <span class="badge points bg-success col-md-3 mx-2 mt-xl-4 py-1"><h3></h3></span>
+      </div>
+      <div class="box">
+        <div class="row col-1 me-1 d-xxl-none">
+          <!--<button class="myButton d-none" id="pause-button">Szünet</button>-->
+          <img class="mb-3 d-none" id="pause-button" src="./Assets/images/pause.png" alt="Pause" style="transform: scale(1.1);">
+          <!--<button class="myButton my-2" id="left-button">Balra</button>-->
+          <img class="arrow mt-2" id="left-button" src="./Assets/images/right-arrow.png" alt="Arrow" style="transform: rotate(180deg);">
+        </div>
+
+        <!--THE CANVAS STARTS-->        
+        <canvas id="canvas" width="1000" height="600"></canvas>
+        <!--THE CANVAS ENDS-->
+
+        <div class="row col-1 ms-1 d-xxl-none">
+          <!--<button class="myButton my-2" id="up-button">Fel</button>-->
+          <img class="arrow mb-2" id="up-button" src="./Assets/images/right-arrow.png" alt="Arrow" style="transform: rotate(270deg);">
+          <!--<button class="myButton" id="right-button">Jobbra</button>-->          
+          <img class="arrow mt-2" id="right-button" src="./Assets/images/right-arrow.png" alt="Arrow">
+        </div>       
+      </div>
+    </div>
+
+    <!--Test Modal For Menu-->    
+    <div class="modal p-0" id="menu" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content menu">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Sonepar Game_Project_1 -- Menü</h5>
+          </div>
+          <div class="modal-body row">
+            <span class="text-center mb-3 d-none d-xxl-block enterTitle">Nyomjon egy 'ENTER'-t az új játék kezdéséhez/folytatásához</span>
+            <div class="mt-3 d-none" id="endGameBox"></div>
+            <button class="my-1 py-1 d-xxl-none" id="startBtn">Játék kezdete/folytatása</button>
+            <button class="my-1 py-1 help" onclick="showHelp()">Segítség</button>
+
+            <div class="mt-3 d-none" id="helpBox">
+              <h4>A játékról röviden:</h4>
+              <ol>
+                <li>A játék célja, hogy 60 másodperc alatt felszedjük a lehető legértékesebb tárgyakat, amiket a Sonepar Shop felhője kínál.</li>
+                <li>Nem szabad azonban mindent felvenni, ugyanis előfordulhat, hogy néhány tárgy pont levonást vagy negatív következményeket eredményezhet.</li>
+                <li>A játékban a karakter képes jobbra, balra haladni, valamint ugrani!</li>
+                <li>Az 'ENTER' gomb megnyomásával bármikor megállíthatja a játékot és visszahozhatja azt a menü állapotot, amit bezárt</li>
+                <li>A játék során elért pontokért szint lépés jár. Ezt követően a Sonepar Cloud sebessége, illetve a játéktéren egyszerre fellelhető tárgyak maximális mennyisége növekszik. Szintlépéssel azonban extra 10 másodpercet is jóváír a játék!</li>
+                <li>A szintek előrehaladtával azok megugrásának esélye jelentősen csökken, miként a felső határ a szintek mértékvel egyenes arányosan nő.</li>
+              </ol>
+              <p><b>Minden tárgy:</b></p>
+              <table class="table">
+                <thead>
+                  <tr>                    
+                    <th scope="col">Név</th>
+                    <th scope="col">Pont értéke</th>
+                  </tr>
+                </thead>
+                <tbody>                
+                </tbody>
+              </table>
+            </div>
+
+            <button onclick="openSettings()" id="settingsBtn" class="my-1 py-1">Beállítások</button>            
+            <div class="settings px-5 d-none">
+
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" value="" id="music" checked>
+                <label class="form-check-label" for="music">
+                  Zene
+                </label>
+              </div>
+
+              <label for="musicVolume" class="form-label">Zene hangereje</label>
+              <input type="range" class="form-range" min="0" max="100" id="musicVolume" value="5">
+
+              <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" value="" id="soundEffects" checked>
+                <label class="form-check-label" for="soundEffects">
+                  Hang Effektek
+                </label>
+              </div>
+
+              <label for="effectVolume" class="form-label">Effektek hangereje</label>
+              <input type="range" class="form-range" min="0" max="100" id="effectVolume" value="30">
+
+              <!--
+              <div class="mt-3">
+                <b>Felbontás:</b>
+              </div>              
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="low">
+                <label class="form-check-label" for="inlineRadio1">(Kisebb) 800x600</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="high" checked>
+                <label class="form-check-label" for="inlineRadio2">(Nagyobb) 1600x900</label>
+              </div>                          
+              -->
+
+            </div>
+          </div>
+          <div class="modal-footer">            
+            <button class="return px-2 d-none" onclick="returnMenu()">Vissza</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Plugin JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!--Assets-->
+    <script src="./Assets/playerSpriteArrays.js"></script>
+    <script src="./Assets/itemTypes.js"></script>
+
+    <!--Model-->
+    <script src="./Model/Game.js"></script>
+    <script src="./Model/Logic.js"></script>
+
+    <!--Controller-->
+    <script src="./Controller/Input/HandleKeys.js"></script>
+    <script src="./Controller/Objects/Entity.js"></script>
+    <script src="./Controller/Objects/Item.js"></script>
+
+    <!--View-->
+    <script src="./View/UI.js"></script>
+    <script src="./View/MyAnimation.js"></script>
+
+    <!--Main Trigger-->
+    <script src="Main.js"></script>
+
+
+  </body>
+</html>
