@@ -55,7 +55,60 @@ const handleKeyDown = (event) => {
 
 document.addEventListener("keydown", handleKeyDown);
 document.addEventListener("keyup", handleKeyUp);
+//Gamepad using
 
+const handleGamepadInput = (event) => {
+  if (event.gamepad.axes[0] < -0.2) {
+    keys.left = true;
+  } else if (event.gamepad.axes[0] > 0.2) {
+    keys.right = true;
+  } else {
+    keys.left = false;
+    keys.right = false;
+  }
+  
+  if (event.gamepad.buttons[0].pressed) {
+    keys.up = true;
+  } else {
+    keys.up = false;
+  }
+  
+  if (event.gamepad.buttons[9].pressed && pause === false) {
+    pause = true;
+    loaded.sounds.gameAudio.pause();
+    menu.toggle();
+  } else if (event.gamepad.buttons[9].pressed && pause === true) {
+    pause = false;
+    // GameOver?
+    if (gameOver) {
+      returnMenu();
+      game.reset();
+      gameOver = false;
+    }
+    // Is it the first play?
+    if (firstGameStart) {
+      firstGameStart = false;
+    }
+    // Music
+    if (document.getElementById("music").checked) {
+      loaded.sounds.gameAudio.play();
+      loaded.sounds.gameAudio.loop = true;
+      loaded.sounds.gameAudio.volume = document.getElementById("musicVolume").value / 100;
+    }
+
+    menu.toggle();
+  }
+}
+
+window.addEventListener("gamepadconnected", (event) => {
+  console.log("Gamepad connected:", event.gamepad.id);
+  setInterval(() => {
+    const gamepad = navigator.getGamepads()[event.gamepad.index];
+    if (gamepad) {
+      handleGamepadInput({ gamepad: gamepad });
+    }
+  }, 100);
+});
 
 //Ipad port keyHandles down there
 const leftButton = document.getElementById("left-button");
