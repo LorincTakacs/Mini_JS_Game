@@ -98,7 +98,7 @@ setInterval(()=> {
             moveCloudRight = true;
         }
     } else {
-        if(cloud.x < canvas.width - 10) {
+        if(cloud.x < canvas.width - cloud.width - 10) {
             moveCloudRight = randomizer('bool');
         } else {
             moveCloudLeft = true;

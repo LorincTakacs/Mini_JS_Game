@@ -45,7 +45,7 @@ class Game {
         }
         
         time += 10; //Kap plus időt
-        cloud.speed += 2 * 2; // növelem a felhő sebességét
+        cloud.speed += 2; // növelem a felhő sebességét
         maxItemNumber += 1 * 2; //maximum spawnolható item
         lvl++;
         lvlUI.innerHTML = `Szint: ${lvl}`;
@@ -92,18 +92,23 @@ const setMap = () => {
 
 const setPlatform = () => {
     let viewPortWidth = window.innerWidth;
-    let viewPortHeight = window.innerHeight;    
+    let viewPortHeight = window.innerHeight;     
 
-    if(viewPortHeight <= 650) {
+    //Adding all the event listeners
+    configureTouches();
+    
+    if(viewPortHeight <= 700) {
+        console.log("méretező lefutott", "méretezés típusa: skálázás");
         document.querySelector(".box").classList.add("smallHeight");
         return;
     }
 
     if(viewPortWidth <= 1200) {
-        console.log("méretező lefutott");
+        console.log("méretező lefutott", "méretezés típusa felbontás: csökkentés is");
         canvas.width = canvas.width / 5 * 4;        
 
         cloud.width = cloud.width / 5 * 4;
+        cloud.height = cloud.height / 5 * 4;
 
         player.width = player.width / 5 * 4;
         player.height = player.height / 5 * 4;
@@ -114,27 +119,26 @@ const setPlatform = () => {
         });
 
         cloud.speed = 1;
-        //player.speed = 3;
-        
+        //player.speed = 3;        
     }    
 };
 
 
 //I control the preload/load system inorder optimize the performance
-const preLoad = () => {
-    
+const preLoad = () => {    
 
     let loadedItems = {
         sounds: {
             collectedAudio: new Audio("./Assets/AudioFiles/Collected_ver2.wav"),
             badCollectedAudio: new Audio("./Assets/AudioFiles/BadCollected.wav"),
-            endGameAudio: new Audio("./Assets/AudioFiles/GameEnd.wav"),            
+            endGameAudio: new Audio("./Assets/AudioFiles/GameEnd.wav"),
             increaseLevelAudio: new Audio("./Assets/AudioFiles/IncreaseLevelAudio.wav"),
             gameAudio: new Audio("./Assets/AudioFiles/Game.wav")
         },
         images: {
-            
-
+            joystickBtn: "./Assets/images/Interface/resize.png",
+            jumpBtn: "./Assets/images/Interface/rightArrow_v2.png",
+            pauseBtn: "./Assets/images/Interface/pause_v2.png",
         }
     };
 
@@ -143,7 +147,7 @@ const preLoad = () => {
     
     //When everything is loaded
     window.addEventListener("load", () => {
-        console.log("Minden betöltött");   
+        console.log("Minden betöltött");
 
         //Set the platform if it smaller, resize
         setPlatform();

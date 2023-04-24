@@ -8,6 +8,12 @@ tileCanvas.width = canvas.width;
 tileCanvas.height = canvas.height;
 var tileCtx = tileCanvas.getContext("2d");
 
+var controlCanvas = document.getElementById("controlsDirection");
+var controlCtx = controlCanvas.getContext("2d");
+
+var jumpCanvas = document.getElementById("controlsJump");
+var jumpCtx = jumpCanvas.getContext("2d");
+
 //Start the inload of everything
 const loaded = preLoad();
 
@@ -104,7 +110,7 @@ const update = () => {
     if(updateCounter % spawnFrequency === 0) {
       if(items.length < maxItemNumber) {
         spawn(cloud);
-      }          
+      }
     }
 
     if(updateCounter % 60 === 0) {
@@ -128,10 +134,15 @@ const draw = () => {
 
   if(!pause) {
     // Clear the canvas, delete the frames
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);    
+
     //Still trying with off canvas
     ctx.drawImage(tileCanvas, 0,0);
+
+    //Call the drawJoystick function to draw the joystick button
+    drawJumpBtn();    
+    drawJoystick();
+    pauseBtn(); 
 
     //Draw the Sonecloud
     cloud.render();
@@ -146,7 +157,7 @@ const draw = () => {
       anim.collected();
     });
 
-    // Draw the player    
+    // Draw the player
     //ctx.fillRect(player.x, player.y, player.width, player.height); // This is the HITBOX    
     player.renderPlayer();
 

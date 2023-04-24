@@ -4,8 +4,9 @@ body {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version */
+  overflow: hidden ;
 }
-canvas {
+canvas#canvas {
     border: 1px solid black;    
 }
 .box {
@@ -48,7 +49,7 @@ canvas {
   text-shadow: 1px 1px #c0c0c0;
 }
 .smallHeight {
-  transform: scale(.86);
+  transform: scale(.83);
   margin-top: -24px;
 }
 
@@ -57,7 +58,10 @@ canvas {
   height: 310px;
 }
 .arrow {
-  height: 60px;
+  height: 74px;
+  background-color: white;
+  border: 10px solid gold;
+  border-radius: 50%;
 }
 .arrow-touched {
   background-color: rgba(0, 0, 0,.1);
