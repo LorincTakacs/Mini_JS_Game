@@ -51,7 +51,7 @@ var points = 0;
 const addPoints = (item, increment = 1) => {
     points += increment;   
     pointsH3.innerHTML = `Pont: ${points}`;
-    animations.push(new MyAnimation(item.x, item.y, 30, 30, item.pointsWorth, item.special));
+    animations.push(new MyAnimation(item.x, item.y, 30, 30, item.pointsWorth, item.special));    
 };
 
 //Create a new item at a random postion with cloud max, min coords

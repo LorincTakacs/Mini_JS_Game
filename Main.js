@@ -39,6 +39,7 @@ var maxItemNumber = 3;
 var pointTolvlUp = 40;
 var lvl = 1;
 var firstGameStart = true;
+var screenIndex = 0;
 
 //SpriteSheet animation's variable
 var currentFrame = 0;
@@ -155,7 +156,12 @@ const draw = () => {
     //Draw the collected number "animation"
     animations.forEach(anim => {
       anim.collected();
+      if(Object.entries(anim.special).length > 0){
+        anim.statusText(screenIndex);
+        screenIndex++;
+      }
     });
+    screenIndex = 0;
 
     // Draw the player
     //ctx.fillRect(player.x, player.y, player.width, player.height); // This is the HITBOX    
@@ -167,9 +173,7 @@ const draw = () => {
     ctx.drawImage(tileCanvas, 0,0);
 
   } else if(!gameOver) {
-    /*
-    ctx.font = "48px serif";
-    ctx.fillText("Szünet", canvas.width/2 - 65, canvas.height/2);*/
+
   }
 
 };

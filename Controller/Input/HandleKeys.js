@@ -198,9 +198,16 @@ startBtn.addEventListener("click", handleButtonRelease);
 //Define custom joystick controls for iPad platform
 // Define the joystick button's properties
 const joystick = {
-  x: 50,
-  y: canvas.height - 50,
-  radius: 50
+  right: {
+    x: 50,
+    y: canvas.height - 50,
+    radius: 50
+  },
+  left: {
+    x: 50,
+    y: canvas.height - 160,
+    radius: 50
+  }  
 };
 
 const jumpButton = {
@@ -212,60 +219,75 @@ const jumpButton = {
 // Draw the joystick button
 var joystickImage = new Image();
 const  drawJoystick = () => {
-  joystickImage.src = loaded.images.joystickBtn;
+  if(tablet) {
+    joystickImage.src = loaded.images.jumpBtn;
 
-  controlCtx.beginPath();
-  controlCtx.arc(joystick.x, joystick.y, joystick.radius, 0, Math.PI * 2);
-  controlCtx.fillStyle = "gold";
-  controlCtx.fill();
-  controlCtx.closePath();
+    controlCtx.beginPath();
+    controlCtx.arc(joystick.right.x, joystick.right.y, joystick.right.radius, 0, Math.PI * 2); //RIGHT indicator
+    controlCtx.arc(joystick.left.x, joystick.left.y, joystick.left.radius, 0, Math.PI * 2); //LEFT indicator
+    controlCtx.fillStyle = "gold";
+    controlCtx.fill();
+    controlCtx.closePath();
 
-  // Draw a smaller circle inside the joystick button
-  controlCtx.beginPath();
-  controlCtx.arc(joystick.x, joystick.y, joystick.radius - 20, 0, Math.PI * 2);
-  controlCtx.fillStyle = "white";
-  controlCtx.fill();
-  controlCtx.closePath();
-
-  controlCtx.drawImage(joystickImage, joystick.x - 30 , joystick.y - 30, 60, 60);  
-
+    // Draw a smaller circle inside the joystick button
+    controlCtx.beginPath();
+    controlCtx.arc(joystick.right.x, joystick.right.y, joystick.right.radius - 20, 0, Math.PI * 2); //RIGHT indicator
+    controlCtx.arc(joystick.left.x, joystick.left.y, joystick.left.radius - 20, 0, Math.PI * 2); //LEFT indicator
+    controlCtx.fillStyle = "white";
+    controlCtx.fill();
+    controlCtx.closePath();
+    
+    controlCtx.drawImage(joystickImage, joystick.right.x - 30 , joystick.right.y - 30, 60, 60);  
+    
+    controlCtx.save();
+    controlCtx.translate(joystick.left.x - 30, joystick.left.y - 30);
+    controlCtx.rotate(Math.PI);
+    controlCtx.drawImage(joystickImage, - 60, -60, 60, 60);
+    controlCtx.restore();
+  }
 }
 
 //Draw the jumpButton
 var jumpBtnImage = new Image();
 const drawJumpBtn = () => {
+  if(tablet) {
+    jumpBtnImage.src = loaded.images.jumpBtn;
 
-  jumpBtnImage.src = loaded.images.jumpBtn;
+    jumpCtx.beginPath();
+    jumpCtx.arc(jumpButton.x, jumpButton.y, jumpButton.radius, 0, Math.PI * 2);
+    jumpCtx.fillStyle = "gold";
+    jumpCtx.fill();
+    jumpCtx.closePath();
 
-  jumpCtx.beginPath();
-  jumpCtx.arc(jumpButton.x, jumpButton.y, jumpButton.radius, 0, Math.PI * 2);
-  jumpCtx.fillStyle = "gold";
-  jumpCtx.fill();
-  jumpCtx.closePath();
+    // Draw a smaller circle inside the joystick button
+    jumpCtx.beginPath();
+    jumpCtx.arc(jumpButton.x, jumpButton.y, jumpButton.radius - 20, 0, Math.PI * 2);
+    jumpCtx.fillStyle = "white";
+    jumpCtx.fill();
+    jumpCtx.closePath();
 
-  // Draw a smaller circle inside the joystick button
-  jumpCtx.beginPath();
-  jumpCtx.arc(jumpButton.x, jumpButton.y, jumpButton.radius - 20, 0, Math.PI * 2);
-  jumpCtx.fillStyle = "white";
-  jumpCtx.fill();
-  jumpCtx.closePath();
-
-  //jumpCtx.drawImage(jumpBtnImage, jumpButton.x - 30 , jumpButton.y - 30, 60, 60);  
-  jumpCtx.save(); // save the current canvas state
-  jumpCtx.translate(jumpButton.x, jumpButton.y); // move the canvas origin to the center of the button
-  jumpCtx.rotate(- Math.PI / 2); // rotate the canvas by 90 degrees clockwise
-  jumpCtx.drawImage(jumpBtnImage, -30, -30, 60, 60); // draw the image centered at the new origin
-  jumpCtx.restore(); // restore the previous canvas state
-
+    jumpCtx.save(); // save the current canvas state
+    jumpCtx.translate(jumpButton.x, jumpButton.y); // move the canvas origin to the center of the button
+    jumpCtx.rotate(- Math.PI / 2); // rotate the canvas by 90 degrees clockwise
+    jumpCtx.drawImage(jumpBtnImage, -30, -30, 60, 60); // draw the image centered at the new origin
+    jumpCtx.restore(); // restore the previous canvas state
+  }
 };
 
-var pauseBtnImage = new Image();
+//Draw the pause button
+var pauseBtnImage = new Image(),
+    tablet = false;
 const pauseBtn = () => {
-  pauseBtnImage.src = loaded.images.pauseBtn;
-  ctx.drawImage(pauseBtnImage, 10, 10, 60, 60);
+  if(tablet) {
+    pauseBtnImage.src = loaded.images.pauseBtn;
+    ctx.drawImage(pauseBtnImage, 10, 10, 60, 60);
+  }
 };
 
 const configureTouches = () => {
+  //Set the platform tablet to true in order to draw out the pause button
+  tablet = true;
+
 //Create event listener for the jump btn
 jumpCanvas.addEventListener("touchstart", function(event) {
   // Get the position of the touch relative to the jumpCanvas element
@@ -304,8 +326,7 @@ canvas.addEventListener("touchstart", function(event){
   const touchY = event.touches[0].clientY - rect.top;
 
   // Calculate the distance between the touch position and the jump button position
-  const distance = Math.sqrt(Math.pow(touchX - 10, 2) + Math.pow(touchY - 10, 2));
-  console.log(distance);
+  const distance = Math.sqrt(Math.pow(touchX - 10, 2) + Math.pow(touchY - 10, 2));  
   if(distance < 60) {
     pause = true;
     loaded.sounds.gameAudio.pause();
@@ -321,29 +342,44 @@ canvas.addEventListener("touchstart", function(event){
 
 // Add an event listener for touchstart event
 controlCanvas.addEventListener("touchstart", function(event) {
+
   // Get the position of the touch
   const touchX = event.touches[0].clientX;
   const touchY = event.touches[0].clientY;
 
   // Calculate the distance between the touch position and the joystick position
-  const distance = Math.sqrt(Math.pow(touchX - joystick.x, 2) + Math.pow(touchY - joystick.y, 2));
+  const rightDistance = Math.sqrt(Math.pow(touchX - joystick.right.x, 2) + Math.pow(touchY - joystick.right.y, 2));
+  const leftDistance = Math.sqrt(Math.pow(touchX - joystick.left.x, 2) + Math.pow(touchY - joystick.left.y, 2));
 
   // If the touch is within the joystick button, change the character's direction and movement
-  if (distance < joystick.radius) {
-    const angle = Math.atan2(touchY - joystick.y, touchX - joystick.x);
-    const direction = angle * (180 / Math.PI);
-
+  if (rightDistance < joystick.right.radius) {
+    //const rightAngle = Math.atan2(touchY - joystick.right.y, touchX - joystick.right.x);
+    //const direction = angle * (180 / Math.PI);
+    keys.right = true;
     // Here you can define your own character's movement and direction logic based on the touch direction
-    if (angle < Math.PI / 2 && angle > -Math.PI / 2) {
+    /*
+    if (rightAngle < Math.PI / 2 && rightAngle > -Math.PI / 2) {
       keys.right = true;
       keys.left = false;
     } else {
       keys.right = false;
-      keys.left = true;
-    }
+      //keys.left = true;
+    }*/
 
   }
-  
+
+  if (leftDistance < joystick.left.radius) {
+    //const leftAngle = Math.atan2(touchY - joystick.left.y, touchX - joystick.left.x);
+    keys.left = true;    
+    /*
+    if(leftAngle < Math.PI / 2 && leftAngle > -Math.PI / 2) {
+      keys.left = true;
+      keys.right = false;
+    } else {
+      keys.left = false;
+    }*/
+  }
+
   // Prevent double-tap zooming on touch devices
   if (event.touches.length > 1) {
     event.preventDefault();
@@ -352,6 +388,7 @@ controlCanvas.addEventListener("touchstart", function(event) {
 });
 
 // Add an event listener for touchmove event
+/*
 controlCanvas.addEventListener("touchmove", function(event) {
   // Get the position of the touch
   const touchX = event.touches[0].clientX;
@@ -382,6 +419,7 @@ controlCanvas.addEventListener("touchmove", function(event) {
   }
 
 });
+*/
 
 // Add an event listener for touchend event
 controlCanvas.addEventListener("touchend", function(event) {

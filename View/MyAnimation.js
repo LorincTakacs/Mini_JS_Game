@@ -42,21 +42,8 @@ class MyAnimation {
 
             // Draw the text with stroke and fill        
             ctx.strokeText("+" + this.pointNumbers, this.x, this.y);
-            ctx.fillText("+" + this.pointNumbers, this.x, this.y);        
+            ctx.fillText("+" + this.pointNumbers, this.x, this.y);    
 
-            if(this.special.hasOwnProperty("speedUP")) {
-                ctx.font = "24px Arial";
-                ctx.fillStyle = "#06d6a0";
-
-                ctx.strokeText("Speed-Up", this.x + 70, this.y - 10);
-                ctx.fillText("Speed-Up", this.x + 70, this.y - 10);
-            } else if (this.special.hasOwnProperty("time")) {
-                ctx.font = "24px Arial";
-                ctx.fillStyle = "#06d6a0";
-
-                ctx.strokeText("Bonus Time", this.x + 70, this.y - 10);
-                ctx.fillText("Bonus Time", this.x + 70, this.y - 10);
-            }        
         } else if (this.pointNumbers <= 0) {
             //Style the text            
             ctx.fillStyle = "#7209b7";
@@ -72,6 +59,21 @@ class MyAnimation {
         if(this.originalY > this.y + 4) {
             animations.splice(animations.indexOf(this), 1);
         }
+    }
+
+    statusText(screenIndex = 1) {
+        let text = "";
+        console.log(screenIndex);
+        if(this.special.hasOwnProperty("speedUP")) {
+            text = "Speed-Up";
+        } else if (this.special.hasOwnProperty("time")) {
+            text = "Bonus Time";
+        }
+        ctx.font = "36px Arial";
+        ctx.fillStyle = "#06d6a0";
+
+        ctx.strokeText(text, canvas.width / 2 - ctx.measureText(text).width / 2, 200 + (screenIndex * 40));
+        ctx.fillText(text, canvas.width / 2 - ctx.measureText(text).width / 2, 200 + (screenIndex * 40));
     }
 
 }
