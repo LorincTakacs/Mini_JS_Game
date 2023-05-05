@@ -4,7 +4,10 @@ body {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version */
-  overflow: hidden ;  
+  /*overflow: hidden ;  */
+}
+.container {
+  max-width: 100%; 
 }
 canvas#canvas {
     border: 1px solid black;    
