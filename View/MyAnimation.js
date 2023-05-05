@@ -62,8 +62,7 @@ class MyAnimation {
     }
 
     statusText(screenIndex = 1) {
-        let text = "";
-        console.log(screenIndex);
+        let text = "";        
         if(this.special.hasOwnProperty("speedUP")) {
             text = "Speed-Up";
         } else if (this.special.hasOwnProperty("time")) {

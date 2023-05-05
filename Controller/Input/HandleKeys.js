@@ -178,7 +178,7 @@ const handleButtonRelease = (event) => {
   }
 */
 }
-/*
+
 leftButton.addEventListener("touchstart", handleButtonPress);
 leftButton.addEventListener("touchend", handleButtonRelease);
 
@@ -187,7 +187,7 @@ rightButton.addEventListener("touchend", handleButtonRelease);
 
 upButton.addEventListener("touchstart", handleButtonPress);
 upButton.addEventListener("touchend", handleButtonRelease);
-
+/*
 pauseButton.addEventListener("touchstart", handleButtonPress);
 pauseButton.addEventListener("touchend", handleButtonRelease);
 */
@@ -197,6 +197,7 @@ startBtn.addEventListener("click", handleButtonRelease);
 
 //Define custom joystick controls for iPad platform
 // Define the joystick button's properties
+/*
 const joystick = {
   right: {
     x: 50,
@@ -353,31 +354,11 @@ controlCanvas.addEventListener("touchstart", function(event) {
 
   // If the touch is within the joystick button, change the character's direction and movement
   if (rightDistance < joystick.right.radius) {
-    //const rightAngle = Math.atan2(touchY - joystick.right.y, touchX - joystick.right.x);
-    //const direction = angle * (180 / Math.PI);
     keys.right = true;
-    // Here you can define your own character's movement and direction logic based on the touch direction
-    /*
-    if (rightAngle < Math.PI / 2 && rightAngle > -Math.PI / 2) {
-      keys.right = true;
-      keys.left = false;
-    } else {
-      keys.right = false;
-      //keys.left = true;
-    }*/
-
   }
 
   if (leftDistance < joystick.left.radius) {
-    //const leftAngle = Math.atan2(touchY - joystick.left.y, touchX - joystick.left.x);
-    keys.left = true;    
-    /*
-    if(leftAngle < Math.PI / 2 && leftAngle > -Math.PI / 2) {
-      keys.left = true;
-      keys.right = false;
-    } else {
-      keys.left = false;
-    }*/
+    keys.left = true;        
   }
 
   // Prevent double-tap zooming on touch devices
@@ -386,40 +367,6 @@ controlCanvas.addEventListener("touchstart", function(event) {
   }
 
 });
-
-// Add an event listener for touchmove event
-/*
-controlCanvas.addEventListener("touchmove", function(event) {
-  // Get the position of the touch
-  const touchX = event.touches[0].clientX;
-  const touchY = event.touches[0].clientY;
-
-  // Calculate the distance between the touch position and the joystick position
-  const distance = Math.sqrt(Math.pow(touchX - joystick.x, 2) + Math.pow(touchY - joystick.y, 2));
-
-  // If the touch is within the joystick button, change the character's direction and movement
-  if (distance < joystick.radius) {
-    const angle = Math.atan2(touchY - joystick.y, touchX - joystick.x);
-    const direction = angle * (180 / Math.PI);
-
-    // Here you can define your own character's movement and direction logic based on the touch direction
-    if (angle < Math.PI / 2 && angle > -Math.PI / 2) {
-      keys.right = true;
-      keys.left = false;
-    } else {
-      keys.right = false;
-      keys.left = true;
-    }
-    
-  }
-
-  // Prevent double-tap zooming on touch devices
-  if (event.touches.length > 1) {
-    event.preventDefault();
-  }
-
-});
-*/
 
 // Add an event listener for touchend event
 controlCanvas.addEventListener("touchend", function(event) {
@@ -440,4 +387,7 @@ window.addEventListener("scroll", function(event) {
   event.preventDefault();
 });
 
-
+window.addEventListener("touchstart", function(event) {
+  event.preventDefault();
+});
+*/

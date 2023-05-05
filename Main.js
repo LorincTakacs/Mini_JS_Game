@@ -7,13 +7,13 @@ var tileCanvas = document.createElement("canvas");
 tileCanvas.width = canvas.width;
 tileCanvas.height = canvas.height;
 var tileCtx = tileCanvas.getContext("2d");
-
+/*
 var controlCanvas = document.getElementById("controlsDirection");
 var controlCtx = controlCanvas.getContext("2d");
 
 var jumpCanvas = document.getElementById("controlsJump");
 var jumpCtx = jumpCanvas.getContext("2d");
-
+*/
 //Start the inload of everything
 const loaded = preLoad();
 
@@ -141,9 +141,9 @@ const draw = () => {
     ctx.drawImage(tileCanvas, 0,0);
 
     //Call the drawJoystick function to draw the joystick button
-    drawJumpBtn();    
-    drawJoystick();
-    pauseBtn(); 
+    //drawJumpBtn();
+    //drawJoystick();
+    //pauseBtn(); 
 
     //Draw the Sonecloud
     cloud.render();

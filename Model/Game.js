@@ -58,12 +58,7 @@ var menu = new bootstrap.Modal(document.getElementById('menu'), {
 });
 
 const setMenu = () => {
-    
-    //let backgroundImage = new Image();
-    //backgroundImage.src = ".Assets/images/";
-    
     menu.toggle()
-
 };
 
 const setMap = () => {
@@ -96,7 +91,7 @@ const setPlatform = () => {
     
     if(viewPortHeight <= 700) {
         //Adding all the event listeners
-        configureTouches();
+        //configureTouches();
 
         console.log("méretező lefutott", "méretezés típusa: skálázás");
         document.querySelector(".box").classList.add("smallHeight");
@@ -105,7 +100,7 @@ const setPlatform = () => {
 
     if(viewPortWidth <= 1200) {
         //Adding all the event listeners
-        configureTouches();
+        //configureTouches();
 
         console.log("méretező lefutott", "méretezés típusa felbontás: csökkentés is");
         canvas.width = canvas.width / 5 * 4;        
@@ -145,13 +140,13 @@ const preLoad = () => {
     };
 
     //Draw the tiles on the background offcanvas
-    setMap();    
+    setMap();
     
     //When everything is loaded
     window.addEventListener("load", () => {
         console.log("Minden betöltött");
 
-        //Set the platform if it smaller, resize
+        //Set the platform if its smaller, resize
         setPlatform();
 
         //Set everything to basic
