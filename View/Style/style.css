@@ -4,7 +4,7 @@ body {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version */
-  overflow: hidden ;
+  overflow: hidden ;  
 }
 canvas#canvas {
     border: 1px solid black;    
@@ -30,6 +30,7 @@ canvas#canvas {
   font-weight: bold;
   background-color: burlywood;
   border: 2px solid gold;
+  color: #000000 !important;
 }
 .modal-title {
   font-weight: bold;
@@ -49,7 +50,7 @@ canvas#canvas {
   text-shadow: 1px 1px #c0c0c0;
 }
 .smallHeight {
-  transform: scale(.83);
+  transform: scale(.9); /*.83 volt előtte*/
   margin-top: -24px;
 }
 
@@ -58,7 +59,7 @@ canvas#canvas {
   height: 310px;
 }
 .arrow {
-  height: 74px;
+  height: 117px;
   background-color: white;
   border: 10px solid gold;
   border-radius: 50%;

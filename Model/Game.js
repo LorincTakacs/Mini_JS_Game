@@ -93,17 +93,20 @@ const setPlatform = () => {
         //Adding all the event listeners
         //configureTouches();
 
-        console.log("méretező lefutott", "méretezés típusa felbontás: csökkentés is");
-        canvas.width = canvas.width / 5 * 4;        
+        console.log("méretező lefutott", "méretezés típusa felbontás: csökkentés is");    
+        let rate = 3;
 
-        cloud.width = cloud.width / 5 * 4;
-        cloud.height = cloud.height / 5 * 4;
+        canvas.width = canvas.width / 4 * rate;
+        //canvas.height = canvas.height  / 5 * rate;
 
-        player.width = player.width / 5 * 4;
-        player.height = player.height / 5 * 4;
+        cloud.width = cloud.width / 4 * rate;
+        cloud.height = cloud.height / 4 * rate;
+
+        player.width = player.width / 4 * rate;
+        player.height = player.height / 4 * rate;
 
         itemTypes.forEach(e => {
-            e.width = e.width / 5 * 4;
+            e.width = e.width / 4 * rate;
             e.height = e.width;
         });
 
@@ -118,7 +121,7 @@ const setPlatform = () => {
         document.querySelector(".box").classList.add("smallHeight");
         return;
     }
-    
+
 };
 
 
