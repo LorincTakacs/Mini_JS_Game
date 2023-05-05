@@ -88,17 +88,15 @@ const setMap = () => {
 const setPlatform = () => {
     let viewPortWidth = window.innerWidth;
     let viewPortHeight = window.innerHeight;        
-
+    
     if(viewPortWidth <= 1300) {
         //Adding all the event listeners
-        //configureTouches();
-
-        window.innerWidth = 1000;
+        //configureTouches();    
 
         console.log("méretező lefutott", "méretezés típusa felbontás: csökkentés is");    
         let rate = 3;
 
-        canvas.width = canvas.width / 4 * rate;
+        canvas.width = canvas.width / 4 * 3;
         //canvas.height = canvas.height  / 5 * rate;
 
         cloud.width = cloud.width / 4 * rate;
@@ -113,7 +111,7 @@ const setPlatform = () => {
         });
 
         cloud.speed = 1;
-        document.querySelector(".box").classList.add("smallHeight");      
+        //document.querySelector(".box").classList.add("smallHeight");   
     }
 
     if(viewPortHeight <= 700) {

@@ -57,7 +57,7 @@ var itemTypes = [
     },
     {
         "id": "5",
-        "name": "Villanykörte",
+        "name": "Izzó",
         "pointsWorth": "+3",
         "special": {            
             "time" : "+2",
