@@ -89,10 +89,10 @@ const setPlatform = () => {
     let viewPortWidth = window.innerWidth;
     let viewPortHeight = window.innerHeight;        
 
-    if(viewPortWidth <= 1200) {
+    if(viewPortWidth <= 1300) {
         //Adding all the event listeners
         //configureTouches();
-        
+
         window.innerWidth = 1000;
 
         console.log("méretező lefutott", "méretezés típusa felbontás: csökkentés is");    
