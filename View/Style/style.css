@@ -7,7 +7,7 @@ body {
   /*overflow: hidden ;  */
 }
 .container {
-  max-width: 100%; 
+  max-width: 80%; 
 }
 canvas#canvas {
     border: 1px solid black;    
