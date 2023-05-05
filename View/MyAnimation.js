@@ -11,10 +11,10 @@ class MyAnimation {
         this.originalY = 0;
 
         //Might be nneded a little bit of an optimalization
-        this.goodSound = new Audio("./Assets/AudioFiles/Collected_ver2.wav");
+        this.goodSound = (this.pointNumbers > 0) ? new Audio("./Assets/AudioFiles/Collected_ver2.wav") : "";
 
         //Bad collected sound        
-        this.badSound = new Audio("./Assets/AudioFiles/BadCollected.wav");
+        this.badSound = (this.pointNumbers < 0) ? new Audio("./Assets/AudioFiles/BadCollected.wav") : "";
     }
 
     collected() {
@@ -22,12 +22,12 @@ class MyAnimation {
 
             this.originalY = this.y;
             this.firstTime = false;
-            if(document.getElementById("soundEffects").checked) {             
-                this.goodSound.volume = document.getElementById("effectVolume").value / 100;
-                this.badSound.volume = document.getElementById("effectVolume").value / 100;
-                if(this.pointNumbers > 0) {                    
+            if(document.getElementById("soundEffects").checked) {                             
+                if(this.pointNumbers > 0) {
+                    this.goodSound.volume = document.getElementById("effectVolume").value / 100;
                     this.goodSound.play();
                 } else {                    
+                    this.badSound.volume = document.getElementById("effectVolume").value / 100;
                     this.badSound.play();
                 }
             }

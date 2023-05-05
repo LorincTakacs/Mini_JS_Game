@@ -45,8 +45,8 @@ class Game {
         }
         
         time += 10; //Kap plus időt
-        cloud.speed += 2; // növelem a felhő sebességét
-        maxItemNumber += 1 * 2; //maximum spawnolható item
+        cloud.speed += 1; // növelem a felhő sebességét
+        maxItemNumber += 2; //maximum spawnolható item
         lvl++;
         lvlUI.innerHTML = `Szint: ${lvl}`;
     }
@@ -110,7 +110,8 @@ const setPlatform = () => {
             e.height = e.width;
         });
 
-        cloud.speed = 1;                
+        cloud.speed = 1;
+        document.querySelector(".box").classList.add("smallHeight");      
     }
 
     if(viewPortHeight <= 700) {
