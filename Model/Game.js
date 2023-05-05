@@ -92,6 +92,8 @@ const setPlatform = () => {
     if(viewPortWidth <= 1200) {
         //Adding all the event listeners
         //configureTouches();
+        
+        window.innerWidth = 1000;
 
         console.log("méretező lefutott", "méretezés típusa felbontás: csökkentés is");    
         let rate = 3;
@@ -149,10 +151,12 @@ const preLoad = () => {
     
     //When everything is loaded
     window.addEventListener("load", () => {
-        console.log("Minden betöltött");
+        console.log("Minden betöltött");        
 
         //Set the platform if its smaller, resize
         setPlatform();      
+
+        document.querySelector(".modal-title").innerHTML += ` | Width: ${window.innerWidth}`;
 
         //Set everything to basic
         game.reset();
