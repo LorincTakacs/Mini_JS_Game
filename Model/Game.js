@@ -154,6 +154,9 @@ const preLoad = () => {
         //Set the platform if its smaller, resize
         setPlatform();
 
+        document.getElementById("width").innerHTML = `${window.innerWidth}`;
+        document.getElementById("height").innerHTML = `${window.innerHeight}`;
+
         //Set everything to basic
         game.reset();
 

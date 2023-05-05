@@ -185,7 +185,3 @@ const loop = () => {
 
     requestAnimationFrame(loop);
 };
-
-
-document.getElementById("width").innerHTML = `${window.innerWidth}`;
-document.getElementById("height").innerHTML = `${window.innerHeight}`;
