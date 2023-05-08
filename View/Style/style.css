@@ -20,7 +20,7 @@ canvas#canvas {
 .myButton {
   background-color: #fff;
   border: 1px solid #ccc; 
-  border-radius: 100%;  
+  border-radius: 100%;
   height: 110px;
 }
 .myButton:focus {
@@ -51,8 +51,8 @@ canvas#canvas {
   text-shadow: 1px 1px #c0c0c0;
 }
 .smallHeight {
-  transform: scale(.9); /*.83 volt előtte*/
-  margin-top: -24px;
+  transform: scale(1.1); /*.9; .83 volt előtte*/
+  margin-top: 34px; /*prev.: -24*/
 }
 
 #helpBox {
