@@ -14,6 +14,7 @@ var controlCtx = controlCanvas.getContext("2d");
 var jumpCanvas = document.getElementById("controlsJump");
 var jumpCtx = jumpCanvas.getContext("2d");
 */
+
 //Start the inload of everything
 const loaded = preLoad();
 
@@ -21,7 +22,7 @@ const loaded = preLoad();
 var game = new Game(60, 0, {player: {x: 100, y: 500}, cloud: {x: canvas.width/2, speed: 2}});
 
 var player = new Entity(50, 250, 30 * 2, 30 * 2, 4, false, 0);
-var cloud = new Entity(canvas.width/2, 10, 200/* * 2*/, 111/*55.5 * 2*/, 1, false, 0, "./Assets/images/cloud_ver4.png");
+var cloud = new Entity(canvas.width/2, 10, 200/* * 2*/, 111/*55.5 * 2*/, 1, false, 0, "./Assets/images/cloud_ver5_shopLogo.png");
 var ground = new Entity(0, canvas.height - 40, canvas.width, 40, 0, false, 0);
 
 //Item container to populate
