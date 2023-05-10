@@ -5,8 +5,8 @@ var itemTypes = [
         "pointsWorth": "+1",
         "special": {            
         },
-        "width": "60",
-        "height": "60",
+        "width": "50",
+        "height": "50",
         "fallSpeed": "1",
         "img": "./Assets/images/items/cable.png"
     },
@@ -16,8 +16,8 @@ var itemTypes = [
         "pointsWorth": "+1",
         "special": {            
         },
-        "width": "60",
-        "height": "60",
+        "width": "50",
+        "height": "50",
         "fallSpeed": "1",
         "img": "./Assets/images/items/lamp.png"
     },
@@ -28,8 +28,8 @@ var itemTypes = [
         "special": {            
             "speedUP": "+3"
         },
-        "width": "60",
-        "height": "60",
+        "width": "50",
+        "height": "50",
         "fallSpeed": "1",
         "img": "./Assets/images/items/electric-panel.png"
     },
@@ -39,8 +39,8 @@ var itemTypes = [
         "pointsWorth": "-5",
         "special": {
         },
-        "width": "60",
-        "height": "60",
+        "width": "50",
+        "height": "50",
         "fallSpeed": "1",
         "img": "./Assets/images/items/exit-door.png"
     },
@@ -50,8 +50,8 @@ var itemTypes = [
         "pointsWorth": "+1",
         "special": {                                
         },
-        "width": "60",
-        "height": "60",
+        "width": "50",
+        "height": "50",
         "fallSpeed": "1",
         "img": "./Assets/images/items/light-switch.png"
     },
@@ -62,11 +62,12 @@ var itemTypes = [
         "special": {            
             "time" : "+2",
         },
-        "width": "60",
-        "height": "60",
+        "width": "50",
+        "height": "50",
         "fallSpeed": "1",
         "img": "./Assets/images/items/lightbulb.png"
     },
+    
     {
         "id": "6",
         "name": "Konnektor",
@@ -74,8 +75,8 @@ var itemTypes = [
         "special": {            
            
         },
-        "width": "60",
-        "height": "60",
+        "width": "50",
+        "height": "50",
         "fallSpeed": "1",
         "img": "./Assets/images/items/plug.png"
     },
@@ -86,8 +87,8 @@ var itemTypes = [
         "special": {            
             
         },
-        "width": "60",
-        "height": "60",
+        "width": "50",
+        "height": "50",
         "fallSpeed": "1",
         "img": "./Assets/images/items/solar-cell.png"
     },
@@ -98,8 +99,8 @@ var itemTypes = [
         "special": {            
            
         },
-        "width": "60",
-        "height": "60",
+        "width": "50",
+        "height": "50",
         "fallSpeed": "1",
         "img": "./Assets/images/items/tape.png"
     }
