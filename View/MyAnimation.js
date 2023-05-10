@@ -24,15 +24,15 @@ class MyAnimation {
             this.firstTime = false;
             if(document.getElementById("soundEffects").checked) {                             
                 if(this.pointNumbers > 0) {
-                    this.goodSound.volume = document.getElementById("effectVolume").value / 100;
+                    this.goodSound.volume = document.getElementById("effectVolume").value * 0.01;
                     this.goodSound.play();
                 } else {                    
-                    this.badSound.volume = document.getElementById("effectVolume").value / 100;
+                    this.badSound.volume = document.getElementById("effectVolume").value * 0.01;
                     this.badSound.play();
                 }
             }
         }
-        ctx.font = "48px Arial";
+        ctx.font = "36px Arial";
         //Checking if its add or minus
         if(this.pointNumbers > 0) {
             //Style the text            
@@ -53,7 +53,7 @@ class MyAnimation {
             // Draw the text with stroke and fill        
             ctx.strokeText(this.pointNumbers, this.x, this.y);
             ctx.fillText(this.pointNumbers, this.x, this.y);
-        }   
+        }
 
         this.y -= 0.2;
         if(this.originalY > this.y + 4) {
@@ -71,8 +71,8 @@ class MyAnimation {
         ctx.font = "36px Arial";
         ctx.fillStyle = "#06d6a0";
 
-        ctx.strokeText(text, canvas.width / 2 - ctx.measureText(text).width / 2, 200 + (screenIndex * 40));
-        ctx.fillText(text, canvas.width / 2 - ctx.measureText(text).width / 2, 200 + (screenIndex * 40));
+        ctx.strokeText(text, canvas.width * 0.5 - ctx.measureText(text).width * 0.5, 200 + (screenIndex * 40));
+        ctx.fillText(text, canvas.width * 0.5 - ctx.measureText(text).width * 0.5, 200 + (screenIndex * 40));
     }
 
 }
