@@ -55,6 +55,8 @@ const handleKeyDown = (event) => {
 
 document.addEventListener("keydown", handleKeyDown);
 document.addEventListener("keyup", handleKeyUp);
+
+
 //Gamepad using
 
 const handleGamepadInput = (event) => {
@@ -93,13 +95,14 @@ const handleGamepadInput = (event) => {
     if (document.getElementById("music").checked) {
       loaded.sounds.gameAudio.play();
       loaded.sounds.gameAudio.loop = true;
-      loaded.sounds.gameAudio.volume = document.getElementById("musicVolume").value / 100;
+      loaded.sounds.gameAudio.volume = document.getElementById("musicVolume").value * 0.01;
     }
 
     menu.toggle();
   }
 }
 
+/*
 window.addEventListener("gamepadconnected", (event) => {
   console.log("Gamepad connected:", event.gamepad.id);
   setInterval(() => {
@@ -109,6 +112,7 @@ window.addEventListener("gamepadconnected", (event) => {
     }
   }, 100);
 });
+*/
 
 //Ipad port keyHandles down there
 const leftButton = document.getElementById("left-button");
@@ -148,7 +152,7 @@ const handleButtonPress = (event) => {
     if(document.getElementById("music").checked) {
       loaded.sounds.gameAudio.play();
       loaded.sounds.gameAudio.loop = true;
-      loaded.sounds.gameAudio.volume = document.getElementById("musicVolume").value / 100;
+      loaded.sounds.gameAudio.volume = document.getElementById("musicVolume").value * 0.01;
     }        
     menu.toggle();
     //pauseButton.classList.remove("d-none");
@@ -194,6 +198,9 @@ pauseButton.addEventListener("touchend", handleButtonRelease);
 startBtn.addEventListener("click", handleButtonPress);
 startBtn.addEventListener("click", handleButtonRelease);
 
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+});
 
 //Define custom joystick controls for iPad platform
 // Define the joystick button's properties
@@ -381,13 +388,4 @@ controlCanvas.addEventListener("touchend", function(event) {
 
 });
 };
-
-//Megtiltom a scrollt
-window.addEventListener("scroll", function(event) {
-  event.preventDefault();
-});
-
-window.addEventListener("touchstart", function(event) {
-  event.preventDefault();
-});
 */
