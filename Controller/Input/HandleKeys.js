@@ -201,9 +201,13 @@ document.addEventListener('gesturestart', function (e) {
   e.preventDefault();
 });
 */
-document.addEventListener('touchstart', function(event){
-  event.preventDefault();
-});
+//Disable zooming globally
+document.addEventListener('touchstart', function(event) {
+  if (event.touches.length > 1) {
+    event.preventDefault();
+  }
+}, {passive: false});
+
 
 //Define custom joystick controls for iPad platform
 // Define the joystick button's properties

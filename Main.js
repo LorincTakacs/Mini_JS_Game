@@ -72,9 +72,7 @@ const update = () => {
     
     items.forEach(e => {
       e.applyGravity();
-    });
-    
-    console.log(performance.now());
+    });        
     
     //Collison detection for all, remove if true
     for(let i = 0; i < items.length; i++) {
