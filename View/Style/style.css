@@ -66,6 +66,7 @@ canvas#canvas {
   border-radius: 50%;
   padding: 0 6px;
   font-size: 30px;
+  touch-action: manipulation;
 }
 .arrow-touched {
   background-color: rgba(0, 0, 0,.1);
