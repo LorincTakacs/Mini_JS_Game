@@ -100,10 +100,6 @@ const setPlatform = () => {
         let rate = 0.75;
 
         canvas.width = canvas.width * rate;
-        //canvas.height = canvas.height * rate;
-
-        //tileCanvas.width = canvas.width;
-        //tileCanvas.height = canvas.height;
 
         cloud.width = cloud.width * rate;
         cloud.height = cloud.height * rate;
