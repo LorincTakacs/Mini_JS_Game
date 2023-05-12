@@ -14,7 +14,7 @@ canvas#canvas {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    align-items: end;    
+    align-items: end;
 }
 
 .myButton {

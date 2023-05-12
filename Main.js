@@ -7,6 +7,7 @@ var tileCanvas = document.createElement("canvas");
 tileCanvas.width = canvas.width;
 tileCanvas.height = canvas.height;
 var tileCtx = tileCanvas.getContext("2d");
+
 /*
 var controlCanvas = document.getElementById("controlsDirection");
 var controlCtx = controlCanvas.getContext("2d");
@@ -19,7 +20,7 @@ var jumpCtx = jumpCanvas.getContext("2d");
 const loaded = preLoad();
 
 // Set up the game state
-var game = new Game(60, 0, {player: {x: 100, y: 500}, cloud: {x: canvas.width/2, speed: 2}});
+var game = new Game(60, 0, {player: {x: 100, y: 500}, cloud: {x: canvas.width * 0.5, speed: 2}});
 
 var player = new Entity(50, 250, 30 * 2, 30 * 2, 4, false, 0);
 var cloud = new Entity(canvas.width/2, 10, 200/* * 2*/, 111/*55.5 * 2*/, 1, false, 0, "./Assets/images/cloud_ver5_shopLogo.png");
@@ -73,7 +74,8 @@ const update = () => {
       e.applyGravity();
     });
     
-
+    console.log(performance.now());
+    
     //Collison detection for all, remove if true
     for(let i = 0; i < items.length; i++) {
 
@@ -144,7 +146,7 @@ const draw = () => {
     //Call the drawJoystick function to draw the joystick button
     //drawJumpBtn();
     //drawJoystick();
-    //pauseBtn(); 
+    //pauseBtn();
 
     //Draw the Sonecloud
     cloud.render();

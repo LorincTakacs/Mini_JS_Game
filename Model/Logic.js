@@ -57,7 +57,7 @@ const addPoints = (item, increment = 1) => {
 //Create a new item at a random postion with cloud max, min coords
 function spawn(cloud) {
       
-    x = Math.floor(Math.random() * (cloud.x + cloud.width - cloud.x)) + cloud.x ;// -110
+    x = Math.floor(Math.random() * (cloud.x + cloud.width - cloud.x)) + cloud.x ;
     //console.log("canvas szélessség: "+ canvas.width + ", x: " + x);
     y = 35 * 2;
     let randomItem = getRandomItemType();
@@ -92,7 +92,7 @@ var moveCloudLeft = false, moveCloudRight = false;
 setInterval(()=> {
 
     if(randomizer('bool')) {
-        if(cloud.x > 0 + 10) {
+        if(cloud.x > 10) {
             moveCloudLeft = randomizer('bool');
         } else {
             moveCloudRight = true;

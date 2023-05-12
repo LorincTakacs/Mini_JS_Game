@@ -53,12 +53,11 @@ const handleKeyDown = (event) => {
   }
 
 
-document.addEventListener("keydown", handleKeyDown);
-document.addEventListener("keyup", handleKeyUp);
+//document.addEventListener("keydown", handleKeyDown);
+//document.addEventListener("keyup", handleKeyUp);
 
 
 //Gamepad using
-
 const handleGamepadInput = (event) => {
   if (event.gamepad.axes[0] < -0.2) {
     keys.left = true;
@@ -158,9 +157,9 @@ const handleButtonPress = (event) => {
     //pauseButton.classList.remove("d-none");
   }
   // Prevent double-tap zooming on touch devices
- /* if (event.touches.length > 1) {
+  if (event.touches.length > 1) {
     event.preventDefault();
-  }*/ 
+  } 
 }
 
 const handleButtonRelease = (event) => {
@@ -177,10 +176,10 @@ const handleButtonRelease = (event) => {
   }
 
   // Prevent double-tap zooming on touch devices
-/*  if (event.touches.length > 1) {
+  if (event.touches.length > 1) {
     event.preventDefault();
   }
-*/
+
 }
 
 leftButton.addEventListener("touchstart", handleButtonPress);

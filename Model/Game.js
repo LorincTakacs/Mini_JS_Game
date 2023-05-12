@@ -40,7 +40,7 @@ class Game {
     increaseLevel() {
         //Lejátszom a szint lépés hangot
         if(document.getElementById("soundEffects").checked) {
-            this.increaseLevelAudio.volume = document.getElementById("effectVolume").value / 100;
+            this.increaseLevelAudio.volume = document.getElementById("effectVolume").value * 0.01;
             this.increaseLevelAudio.play();
         }
         
@@ -69,17 +69,18 @@ const setMap = () => {
         tileCtx.drawImage(backgroundImage, 0,0, canvas.width, canvas.height);
     });
 
+    let tileSize = 40;
 
     let image = new Image();
     image.src = "./Assets/images/tiles/tile29.png";
-    numberOfTiles = Math.floor(canvas.width / 40);
+    numberOfTiles = Math.floor(canvas.width / tileSize);
     
     //I have to wait for the image to load in
     image.addEventListener("load", () => {
         let x = 0;
         for(let i = 0; i <  numberOfTiles; i++) {
-            tileCtx.drawImage(image, x, canvas.height - 40, 40, 40);
-            x += 40;
+            tileCtx.drawImage(image, x, canvas.height - tileSize, tileSize, tileSize);
+            x += tileSize;
         }
     });
     
@@ -94,27 +95,35 @@ const setPlatform = () => {
         //configureTouches();    
 
         console.log("méretező lefutott", "méretezés típusa felbontás: csökkentés is");    
-        let rate = 3;
+        
+        //So, its like X/divider * rate
+        let rate = 0.75;
 
-        canvas.width = canvas.width / 4 * 3;
-        //canvas.height = canvas.height  / 5 * rate;
+        canvas.width = canvas.width * rate;
+        //canvas.height = canvas.height * rate;
 
-        cloud.width = cloud.width / 4 * rate;
-        cloud.height = cloud.height / 4 * rate;
+        //tileCanvas.width = canvas.width;
+        //tileCanvas.height = canvas.height;
 
-        player.width = player.width / 4 * rate;
-        player.height = player.height / 4 * rate;
+        cloud.width = cloud.width * rate;
+        cloud.height = cloud.height * rate;
+
+        player.width = player.width * rate;
+        player.height = player.height * rate;
 
         itemTypes.forEach(e => {
-            e.width = e.width / 4 * rate;
+            e.width = e.width * rate;
             e.height = e.width;
         });
 
         cloud.speed = 1;
-        //document.querySelector(".box").classList.add("smallHeight");   
+    } else {
+        document.addEventListener("keydown", handleKeyDown);
+        document.addEventListener("keyup", handleKeyUp);
     }
 
     if(viewPortHeight <= 700) {
+        
         //Adding all the event listeners
         //configureTouches();
 
@@ -142,17 +151,17 @@ const preLoad = () => {
             jumpBtn: "./Assets/images/Interface/rightArrow_v2.png",
             pauseBtn: "./Assets/images/Interface/pause_v2.png",
         }
-    };
+    };        
 
     //Draw the tiles on the background offcanvas
     setMap();
     
     //When everything is loaded
     window.addEventListener("load", () => {
-        console.log("Minden betöltött");        
+        console.log("Minden betöltött");                
 
         //Set the platform if its smaller, resize
-        setPlatform();      
+        setPlatform();            
 
         document.querySelector(".modal-title").innerHTML += ` | Width: ${window.innerWidth}`;
         document.querySelector(".modal-title").innerHTML += ` | Height: ${window.innerHeight}`;
@@ -171,24 +180,4 @@ const preLoad = () => {
     });
 
     return loadedItems;
-};
-
-
-const setResolution = (res) => {
-
-    if(res === "low" && !canvas.classList.contains("lowRes")) {
-        canvas.width = canvas.width / 2;
-        canvas.height = canvas.height / 2;
-
-        tileCanvas.width = canvas.width;
-        tileCanvas.height = canvas.height;
-        canvas.classList.add("lowRes");
-    }
-
-    if(res === "high" && canvas.classList.contains("lowRes")) {        
-        canvas.classList.remove("lowRes");
-        canvas.width = 1000;
-        canvas.height = 600;        
-    }
-
 };

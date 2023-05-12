@@ -126,5 +126,5 @@ const returnMenu = () => {
     
     helpBtn.classList.remove("d-none");    
     settingsBtn.classList.remove("d-none");
-    title.innerHTML = `Főmenü`;
+    title.innerHTML = `Energy Run | Főmenü`;
 };
