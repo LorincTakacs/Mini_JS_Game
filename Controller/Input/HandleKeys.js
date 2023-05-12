@@ -196,9 +196,13 @@ pauseButton.addEventListener("touchend", handleButtonRelease);
 */
 startBtn.addEventListener("click", handleButtonPress);
 startBtn.addEventListener("click", handleButtonRelease);
-
+/*
 document.addEventListener('gesturestart', function (e) {
   e.preventDefault();
+});
+*/
+document.addEventListener('touchstart', function(event){
+  event.preventDefault();
 });
 
 //Define custom joystick controls for iPad platform
