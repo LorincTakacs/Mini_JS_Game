@@ -113,6 +113,14 @@ const setPlatform = () => {
         });
 
         cloud.speed = 1;
+
+        //Disable pinch-zoom and swipe
+        let container = document.body;
+        let hammer = new Hammer(container);
+
+        hammer.get('pinch').set({enable: false});
+        hammer.get('swipe').set({enable: false});
+
     } else {
         document.addEventListener("keydown", handleKeyDown);
         document.addEventListener("keyup", handleKeyUp);
@@ -154,7 +162,7 @@ const preLoad = () => {
     
     //When everything is loaded
     window.addEventListener("load", () => {
-        console.log("Minden betöltött");                
+        console.log("Minden betöltött");        
 
         //Set the platform if its smaller, resize
         setPlatform();            

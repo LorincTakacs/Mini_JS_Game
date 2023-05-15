@@ -8,6 +8,7 @@ tileCanvas.width = canvas.width;
 tileCanvas.height = canvas.height;
 var tileCtx = tileCanvas.getContext("2d");
 
+
 /*
 var controlCanvas = document.getElementById("controlsDirection");
 var controlCtx = controlCanvas.getContext("2d");
