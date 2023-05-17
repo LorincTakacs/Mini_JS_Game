@@ -114,8 +114,12 @@ const setPlatform = () => {
         //Disable pinch-zoom and swipe
         let container = document.body;
         let modalContainer = document.querySelector(".modal");
+        let contentContainer = document.querySelector(".box");
+
+
         let hammer = new Hammer(container);
         let hammerModal = new Hammer(modalContainer);
+        let hammerContent = new Hammer(contentContainer);
 
         //For the body
         hammer.get('pinch').set({enable: false});
@@ -123,7 +127,11 @@ const setPlatform = () => {
 
         //For the modal
         hammerModal.get('pinch').set({enable: false});
-        hammerModal.get('swipe').set({enable: false});        
+        hammerModal.get('swipe').set({enable: false});
+
+        //For the content 
+        hammerContent.get('pinch').set({enable: false});
+        hammerContent.get('swipe').set({enable: false}); 
 
     } else {
         document.addEventListener("keydown", handleKeyDown);
