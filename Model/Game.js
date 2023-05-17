@@ -90,10 +90,7 @@ const setPlatform = () => {
     let viewPortWidth = window.innerWidth;
     let viewPortHeight = window.innerHeight;        
     
-    if(viewPortWidth <= 1300) {
-        //Adding all the event listeners
-        //configureTouches();    
-
+    if(viewPortWidth <= 1300) {                
         console.log("méretező lefutott", "méretezés típusa felbontás: csökkentés is");    
         
         //So, its like X/divider * rate
@@ -116,24 +113,28 @@ const setPlatform = () => {
 
         //Disable pinch-zoom and swipe
         let container = document.body;
+        let modalContainer = document.querySelector(".modal");
         let hammer = new Hammer(container);
+        let hammerModal = new Hammer(modalContainer);
 
+        //For the body
         hammer.get('pinch').set({enable: false});
         hammer.get('swipe').set({enable: false});
+        
+        //For the modal
+        hammerModal.get('pinch').set({enable: false});
+        hammerModal.get('swipe').set({enable: false});        
 
     } else {
         document.addEventListener("keydown", handleKeyDown);
         document.addEventListener("keyup", handleKeyUp);
     }
 
-    if(viewPortHeight <= 700) {
-        
-        //Adding all the event listeners
-        //configureTouches();
+    if(viewPortHeight <= 700) {    
 
         console.log("méretező lefutott", "méretezés típusa: skálázás");
         document.querySelector(".box").classList.add("smallHeight");
-        return;
+        //return;
     }
 
 };
