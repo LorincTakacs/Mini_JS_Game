@@ -176,7 +176,7 @@ const preLoad = () => {
     loadedItems.images.lightbulb.src = "./Assets/images/items/lightbulb_small.png";
     loadedItems.images.plug.src = "./Assets/images/items/plug_small.png";
     loadedItems.images.solarCell.src = "./Assets/images/items/solar-cell_small.png";
-    loadedItems.images.tape.src = "./Assets/images/items/tape_small.png";
+    loadedItems.images.tape.src = "./Assets/images/items/tape_small.png";    
 
     //Draw the tiles on the background offcanvas
     setMap();
@@ -184,6 +184,7 @@ const preLoad = () => {
     //When everything is loaded
     window.addEventListener("load", () => {
         console.log("Minden betöltött");        
+        
 
         //Set the platform if its smaller, resize
         setPlatform();            
