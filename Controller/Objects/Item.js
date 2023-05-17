@@ -6,13 +6,15 @@ class Item {
         this.height = height;
         this.fallSpeed = fallSpeed;
         this.pointsWorth = pointsWorth;
-        this.imgPath = imgPath;
+        //this.imgPath = imgPath;
         this.alpha = 1;
         this.special = special;
-
+        
+        this.image = loaded.images[imgPath];
+        /*
         this.image = new Image();
         this.image.src = this.imgPath;
-
+        */
     }
     
     //Apply gravity

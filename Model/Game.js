@@ -120,7 +120,7 @@ const setPlatform = () => {
         //For the body
         hammer.get('pinch').set({enable: false});
         hammer.get('swipe').set({enable: false});
-        
+
         //For the modal
         hammerModal.get('pinch').set({enable: false});
         hammerModal.get('swipe').set({enable: false});        
@@ -143,6 +143,9 @@ const setPlatform = () => {
 //I control the preload/load system inorder optimize the performance
 const preLoad = () => {    
 
+    //TODO: loading animation starts?
+    console.log("loading started");
+
     let loadedItems = {
         sounds: {
             collectedAudio: new Audio("./Assets/AudioFiles/Collected_ver2.wav"),
@@ -152,11 +155,28 @@ const preLoad = () => {
             gameAudio: new Audio("./Assets/AudioFiles/Game.wav")
         },
         images: {
-            joystickBtn: "./Assets/images/Interface/resize.png",
-            jumpBtn: "./Assets/images/Interface/rightArrow_v2.png",
-            pauseBtn: "./Assets/images/Interface/pause_v2.png",
-        }
-    };        
+            cabel: new Image(),
+            lamp: new Image(),
+            electricPanel: new Image(),
+            exitDoor: new Image(),
+            lightSwitch: new Image(),
+            lightbulb: new Image(),
+            plug: new Image(),
+            solarCell: new Image(),
+            tape: new Image()
+        }        
+    };   
+    
+    //adding the source files
+    loadedItems.images.cabel.src = "./Assets/images/items/cable_small.png";
+    loadedItems.images.lamp.src = "./Assets/images/items/lamp_small.png";
+    loadedItems.images.electricPanel.src = "./Assets/images/items/electric-panel_small.png";
+    loadedItems.images.exitDoor.src = "./Assets/images/items/exit-door_small.png";
+    loadedItems.images.lightSwitch.src = "./Assets/images/items/light-switch_small.png";
+    loadedItems.images.lightbulb.src = "./Assets/images/items/lightbulb_small.png";
+    loadedItems.images.plug.src = "./Assets/images/items/plug_small.png";
+    loadedItems.images.solarCell.src = "./Assets/images/items/solar-cell_small.png";
+    loadedItems.images.tape.src = "./Assets/images/items/tape_small.png";
 
     //Draw the tiles on the background offcanvas
     setMap();
@@ -179,6 +199,8 @@ const preLoad = () => {
 
         //Opening the menu
         setMenu();
+
+        console.log("loading ended");
         
         //Start the game-loop        
         loop();

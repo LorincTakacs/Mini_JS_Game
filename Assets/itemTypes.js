@@ -8,7 +8,8 @@ var itemTypes = [
         "width": "50",
         "height": "50",
         "fallSpeed": "1",
-        "img": "./Assets/images/items/cable.png"
+        "img": "./Assets/images/items/cable.png",
+        "LoadedImg": "cabel"
     },
     {
         "id": "1",
@@ -19,7 +20,8 @@ var itemTypes = [
         "width": "50",
         "height": "50",
         "fallSpeed": "1",
-        "img": "./Assets/images/items/lamp.png"
+        "img": "./Assets/images/items/lamp.png",
+        "LoadedImg": "lamp"
     },
     {
         "id": "2",
@@ -31,7 +33,8 @@ var itemTypes = [
         "width": "50",
         "height": "50",
         "fallSpeed": "1",
-        "img": "./Assets/images/items/electric-panel.png"
+        "img": "./Assets/images/items/electric-panel.png",
+        "LoadedImg": "electricPanel"
     },
     {
         "id": "3",
@@ -42,7 +45,8 @@ var itemTypes = [
         "width": "50",
         "height": "50",
         "fallSpeed": "1",
-        "img": "./Assets/images/items/exit-door.png"
+        "img": "./Assets/images/items/exit-door.png",
+        "LoadedImg": "exitDoor"
     },
     {
         "id": "4",
@@ -53,7 +57,8 @@ var itemTypes = [
         "width": "50",
         "height": "50",
         "fallSpeed": "1",
-        "img": "./Assets/images/items/light-switch.png"
+        "img": "./Assets/images/items/light-switch.png",
+        "LoadedImg": "lightSwitch"
     },
     {
         "id": "5",
@@ -65,7 +70,8 @@ var itemTypes = [
         "width": "50",
         "height": "50",
         "fallSpeed": "1",
-        "img": "./Assets/images/items/lightbulb.png"
+        "img": "./Assets/images/items/lightbulb.png",
+        "LoadedImg": "lightbulb"
     },
     
     {
@@ -78,19 +84,21 @@ var itemTypes = [
         "width": "50",
         "height": "50",
         "fallSpeed": "1",
-        "img": "./Assets/images/items/plug.png"
+        "img": "./Assets/images/items/plug.png",
+        "LoadedImg": "plug"
     },
     {
         "id": "7",
         "name": "Napelem",
         "pointsWorth": "+5",
-        "special": {            
+        "special": {
             
         },
         "width": "50",
         "height": "50",
         "fallSpeed": "1",
-        "img": "./Assets/images/items/solar-cell.png"
+        "img": "./Assets/images/items/solar-cell.png",
+        "LoadedImg": "solarCell"
     },
     {
         "id": "8",
@@ -102,7 +110,8 @@ var itemTypes = [
         "width": "50",
         "height": "50",
         "fallSpeed": "1",
-        "img": "./Assets/images/items/tape.png"
+        "img": "./Assets/images/items/tape.png",
+        "LoadedImg": "tape"
     }
     
 ];

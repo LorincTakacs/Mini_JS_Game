@@ -69,7 +69,7 @@ function spawn(cloud) {
     if(Object.keys(randomItem.special).length > 0) {
         special = randomItem.special;
     }
-    imgPath = randomItem.img;
+    imgPath = randomItem.LoadedImg;
 
 
     createdItem = new Item(x, y, width, height, 2, pointsWorth, imgPath, special);
