@@ -64,26 +64,39 @@ const setMenu = () => {
 const setMap = () => {
     
     let backgroundImage = new Image();
-    backgroundImage.src = "./Assets/images/tiles/mountains.png";
-    backgroundImage.addEventListener("load", () => {
-        tileCtx.drawImage(backgroundImage, 0,0, canvas.width, canvas.height);
-    });
-
+    let image = new Image();
     let tileSize = 40;
 
-    let image = new Image();
-    image.src = "./Assets/images/tiles/tile29.png";
-    numberOfTiles = Math.floor(canvas.width / tileSize);
+    backgroundImage.src = "./Assets/images/tiles/mountains.png";
+    backgroundImage.addEventListener("load", () => {
+        tileCtx.drawImage(backgroundImage, 0,0, canvas.width, canvas.height);        
+        image.src = "./Assets/images/tiles/tile29.png";
+
+        numberOfTiles = Math.floor(canvas.width / tileSize);
+
+        let x = 0;
+        image.addEventListener("load", () => {        
+            for(let i = 0; i <  numberOfTiles; i++) {
+                tileCtx.drawImage(image, x, canvas.height - tileSize, tileSize, tileSize);
+                x += tileSize;
+            }
+        });
+    });
+
+    //let tileSize = 40;
+    
+    //numberOfTiles = Math.floor(canvas.width / tileSize);
     
     //I have to wait for the image to load in
-    image.addEventListener("load", () => {
-        let x = 0;
+    /*
+    let x = 0;
+    image.addEventListener("load", () => {        
         for(let i = 0; i <  numberOfTiles; i++) {
             tileCtx.drawImage(image, x, canvas.height - tileSize, tileSize, tileSize);
             x += tileSize;
         }
     });
-    
+    */
 }
 
 const setPlatform = () => {
@@ -151,7 +164,6 @@ const setPlatform = () => {
 
         console.log("méretező lefutott", "méretezés típusa: skálázás");
         document.querySelector(".box").classList.add("smallHeight");
-        //return;
     }
 
 };
