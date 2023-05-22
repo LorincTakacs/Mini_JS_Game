@@ -32,7 +32,7 @@ class MyAnimation {
                 }
             }
         }
-        ctx.font = "36px Arial";
+        ctx.font = "24px Arial";
         //Checking if its add or minus
         if(this.pointNumbers > 0) {
             //Style the text            
