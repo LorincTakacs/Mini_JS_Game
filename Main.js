@@ -34,6 +34,7 @@ var pointTolvlUp = 40;
 var lvl = 1;
 var firstGameStart = true;
 var screenIndex = 0;
+var fpsModificator = 1;
 
 //SpriteSheet animation's variable
 var currentFrame = 0;
@@ -47,57 +48,64 @@ var previousArray = spriteArray;
 
 const update = () => {
   if(!pause) {
-    // Move the this left or right
-    player.move(
-      (player.x < 0) ? false : keys.left,
-      (player.x > canvas.width - player.width) ? false : keys.right,
-      keys.up
-    );
+    //Here is where set the initial fps
+    if(updateCounter % fpsModificator === 0) {
+      // Move the this left or right
+      player.move(
+        (player.x < 0) ? false : keys.left,
+        (player.x > canvas.width - player.width) ? false : keys.right,
+        keys.up
+      );
 
-    //Move the cloud random
-    cloud.move(moveCloudLeft, moveCloudRight, false);
-    if(cloud.x > canvas.width - cloud.width ) {
-        moveCloudRight = false;
-    } else if(cloud.x < 1 /*0 + cloud.width*/ ) {
-        moveCloudLeft = false;
-    }
-    
-    items.forEach(e => {
-      e.applyGravity();
-    });        
-    
-    //Collison detection for all, remove if true
-    for(let i = 0; i < items.length; i++) {
+      //Move the cloud random
+      cloud.move(moveCloudLeft, moveCloudRight, false);
+      if(cloud.x > canvas.width - cloud.width ) {
+          moveCloudRight = false;
+      } else if(cloud.x < 1 /*0 + cloud.width*/ ) {
+          moveCloudLeft = false;
+      }
+      
+      items.forEach(e => {
+        e.applyGravity();
+      });   
+      
+      //Collison detection for all, remove if true
+      let i = 0;
+      for(; i < items.length; i++) {
 
-      if(collison(ground, items[i])) {
-        
-        items.splice(i, 1);
+        if(collison(ground, items[i])) {
+          
+          items.splice(i, 1);
 
-      } else if(collison(player, items[i])) {
-        
-        addPoints(items[i], items[i].pointsWorth);
-        items[i].specialEffect();
-        items.splice(i, 1);
-        
-        if(points >= pointTolvlUp) {
-          pointTolvlUp += pointTolvlUp;
-          game.increaseLevel();
+        } else if(collison(player, items[i])) {
+          
+          addPoints(items[i], items[i].pointsWorth);
+          items[i].specialEffect();
+          items.splice(i, 1);
+          
+          if(points >= pointTolvlUp) {
+            pointTolvlUp += pointTolvlUp;
+            game.increaseLevel();
+          }
+
         }
 
       }
 
-    }
+      //Falling dawn of the player
+      player.dy += fpsModificator == 1 ? 0.5 : 1;
+      player.y += player.dy;
 
-    //Falling dawn of the player
-    player.dy += 0.5;
-    player.y += player.dy;
+      //If collison is detected with the ground i stop the player from falling more
+      if(collison(ground, player)) {
+        player.dy = 0;
+        player.jumping = false;
+        player.y = ground.y - player.height;
+      }
 
-    //If collison is detected with the ground i stop the player from falling more
-    if(collison(ground, player)) {
-      player.dy = 0;
-      player.jumping = false;
-      player.y = ground.y - player.height;
+
     }
+    
 
 
     //Spawn form the items array

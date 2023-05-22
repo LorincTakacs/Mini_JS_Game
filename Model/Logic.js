@@ -58,7 +58,6 @@ const addPoints = (item, increment = 1) => {
 function spawn(cloud) {
       
     x = Math.floor(Math.random() * (cloud.x + cloud.width - cloud.x)) + cloud.x ;
-    //console.log("canvas szélessség: "+ canvas.width + ", x: " + x);
     y = 35 * 2;
     randomItem = getRandomItemType();
     width = parseInt(randomItem.width);
@@ -72,7 +71,7 @@ function spawn(cloud) {
     imgPath = randomItem.LoadedImg;
 
 
-    createdItem = new Item(x, y, width, height, 2, pointsWorth, imgPath, special);
+    createdItem = new Item(x, y, width, height, fallSpeed, pointsWorth, imgPath, special);
     canBeCreated = true;
 
     items.forEach(e=> {

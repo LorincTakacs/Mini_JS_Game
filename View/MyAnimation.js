@@ -32,7 +32,7 @@ class MyAnimation {
                 }
             }
         }
-        ctx.font = "24px Arial";
+        ctx.font = "36px Arial";
         //Checking if its add or minus
         if(this.pointNumbers > 0) {
             //Style the text            
@@ -59,6 +59,8 @@ class MyAnimation {
         if(this.originalY > this.y + 4) {
             animations.splice(animations.indexOf(this), 1);
         }
+                
+        
     }
 
     statusText(screenIndex = 1) {

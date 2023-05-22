@@ -34,7 +34,7 @@ class Entity {
                     
         if (keyY && !this.jumping) {            
             this.jumping = true;            
-            this.dy = -13;
+            this.dy = fpsModificator == 1 ? -13 : -18;
         }
 
     }    
@@ -58,11 +58,11 @@ class Entity {
         if(this.movingLeft) {
             ctx.save();
             ctx.scale(-1,1); //FLip
-            ctx.drawImage(this.spriteImage, -(this.x - this.width / 2) - (this.width * 2), this.y - this.height /2, this.width *2, this.height *2);
+            ctx.drawImage(this.spriteImage, -(this.x - this.width * 0.5) - (this.width * 2), this.y - this.height * 0.5, this.width *2, this.height *2);
             ctx.setTransform(1, 0, 0, 1, 0, 0);
             ctx.restore();
         } else {
-            ctx.drawImage(this.spriteImage, this.x - this.width / 2, this.y - this.height /2, this.width *2, this.height *2);
+            ctx.drawImage(this.spriteImage, this.x - this.width * 0.5, this.y - this.height * 0.5, this.width * 2, this.height * 2);
         }
 
     }

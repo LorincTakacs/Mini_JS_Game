@@ -45,7 +45,7 @@ class Game {
         }
         
         time += 10; //Kap plus időt
-        cloud.speed += 1; // növelem a felhő sebességét
+        game.entities.cloud.speed += 1; // növelem a felhő sebességét        
         maxItemNumber += (window.innerWidth > 1200) ? 2 : 1; //maximum spawnolható item
         lvl++;
         lvlUI.innerHTML = `Szint: ${lvl}`;
@@ -82,21 +82,7 @@ const setMap = () => {
             }
         });
     });
-
-    //let tileSize = 40;
     
-    //numberOfTiles = Math.floor(canvas.width / tileSize);
-    
-    //I have to wait for the image to load in
-    /*
-    let x = 0;
-    image.addEventListener("load", () => {        
-        for(let i = 0; i <  numberOfTiles; i++) {
-            tileCtx.drawImage(image, x, canvas.height - tileSize, tileSize, tileSize);
-            x += tileSize;
-        }
-    });
-    */
 }
 
 const setPlatform = () => {
@@ -120,9 +106,7 @@ const setPlatform = () => {
         itemTypes.forEach(e => {
             e.width = e.width * rate;
             e.height = e.width;
-        });
-
-        cloud.speed = 1;
+        });        
 
         //Disable pinch-zoom and swipe
         let container = document.body;
@@ -133,7 +117,9 @@ const setPlatform = () => {
 
         let hammer = new Hammer(container);
         let hammerModal = new Hammer(modalContainer);
-        let hammerContent = new Hammer(contentContainer);        
+        let hammerContent = new Hammer(contentContainer);
+        let hammerBtnDIRECTON = new Hammer(btnContainer[0]);
+        let hammerBtnUP = new Hammer(btnContainer[1]);
 
         //For the body
         hammer.get('pinch').set({enable: false});
@@ -147,13 +133,22 @@ const setPlatform = () => {
         hammerContent.get('pinch').set({enable: false});
         hammerContent.get('swipe').set({enable: false});
 
-        btnContainer.forEach(e => {
+        //For hte button
+        hammerBtnDIRECTON.get('pinch').set({enable: false});
+        hammerBtnDIRECTON.get('swipe').set({enable: false});        
+        hammerBtnUP.get('pinch').set({enable: false});
+        hammerBtnUP.get('swipe').set({enable: false});
+
+        btnContainer.forEach(e => {            
             e.addEventListener("touchstart", function(event){
                 if(event.touches.length > 1) {
                     event.preventDefault();
                 }
             });
         });
+        
+        //Setting up the fps for small ViewPort
+        setUpFor30Fps
 
     } else {
         document.addEventListener("keydown", handleKeyDown);
@@ -209,14 +204,13 @@ const preLoad = () => {
 
     //Draw the tiles on the background offcanvas
     setMap();
-    
+
     //When everything is loaded
     window.addEventListener("load", () => {
         console.log("Minden betöltött");        
-        
 
         //Set the platform if its smaller, resize
-        setPlatform();            
+        setPlatform();                   
 
         document.querySelector(".modal-title").innerHTML += ` | Width: ${window.innerWidth}`;
         document.querySelector(".modal-title").innerHTML += ` | Height: ${window.innerHeight}`;
@@ -237,4 +231,17 @@ const preLoad = () => {
     });
 
     return loadedItems;
+};
+
+
+const setUpFor30Fps = () => {
+    fpsModificator = 2;
+
+    player.speed *= 2;
+    game.entities.cloud.speed *= 2;
+
+    itemTypes.forEach((e)=> {
+        e.fallSpeed *= 1.5;
+    });
+
 };

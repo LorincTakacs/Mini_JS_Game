@@ -9,7 +9,7 @@ class Item {
         //this.imgPath = imgPath;
         this.alpha = 1;
         this.special = special;
-        
+
         //Give it the preloaded image
         this.image = loaded.images[imgPath];
        
@@ -17,7 +17,7 @@ class Item {
     
     //Apply gravity
     applyGravity() {  
-        this.y += this.fallSpeed;
+        this.y += this.fallSpeed;        
     }
 
     //Render individual images
