@@ -136,12 +136,7 @@ pauseButton.addEventListener("touchend", handleButtonRelease);
 startBtn.addEventListener("click", handleButtonPress);
 startBtn.addEventListener("click", handleButtonRelease);
 
-/*
-document.addEventListener('gesturestart', function (e) {
-  e.preventDefault();
-});
-*/
-//Disable zooming globally
+//Tring to disable zooming globally
 document.addEventListener('touchstart', function(event) {
   if (event.touches.length > 1) {
     event.preventDefault();

@@ -60,9 +60,9 @@ function spawn(cloud) {
     x = Math.floor(Math.random() * (cloud.x + cloud.width - cloud.x)) + cloud.x ;
     //console.log("canvas szélessség: "+ canvas.width + ", x: " + x);
     y = 35 * 2;
-    let randomItem = getRandomItemType();
+    randomItem = getRandomItemType();
     width = parseInt(randomItem.width);
-    height = parseInt(randomItem.height);    
+    height = parseInt(randomItem.height);
     fallSpeed = parseInt(randomItem.fallSpeed);
     pointsWorth = parseInt(randomItem.pointsWorth);
     special = {};

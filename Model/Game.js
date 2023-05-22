@@ -46,7 +46,7 @@ class Game {
         
         time += 10; //Kap plus időt
         cloud.speed += 1; // növelem a felhő sebességét
-        maxItemNumber += 2; //maximum spawnolható item
+        maxItemNumber += (window.innerWidth > 1200) ? 2 : 1; //maximum spawnolható item
         lvl++;
         lvlUI.innerHTML = `Szint: ${lvl}`;
     }
@@ -115,11 +115,12 @@ const setPlatform = () => {
         let container = document.body;
         let modalContainer = document.querySelector(".modal");
         let contentContainer = document.querySelector(".box");
+        let btnContainer = document.querySelectorAll(".box .row");
 
 
         let hammer = new Hammer(container);
         let hammerModal = new Hammer(modalContainer);
-        let hammerContent = new Hammer(contentContainer);
+        let hammerContent = new Hammer(contentContainer);        
 
         //For the body
         hammer.get('pinch').set({enable: false});
@@ -131,7 +132,15 @@ const setPlatform = () => {
 
         //For the content 
         hammerContent.get('pinch').set({enable: false});
-        hammerContent.get('swipe').set({enable: false}); 
+        hammerContent.get('swipe').set({enable: false});
+
+        btnContainer.forEach(e => {
+            e.addEventListener("touchstart", function(event){
+                if(event.touches.length > 1) {
+                    event.preventDefault();
+                }
+            });
+        });
 
     } else {
         document.addEventListener("keydown", handleKeyDown);

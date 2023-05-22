@@ -10,11 +10,9 @@ class Item {
         this.alpha = 1;
         this.special = special;
         
+        //Give it the preloaded image
         this.image = loaded.images[imgPath];
-        /*
-        this.image = new Image();
-        this.image.src = this.imgPath;
-        */
+       
     }
     
     //Apply gravity
