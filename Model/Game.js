@@ -129,13 +129,13 @@ const setPlatform = () => {
         hammerModal.get('pinch').set({enable: false});
         hammerModal.get('swipe').set({enable: false});
 
-        //For the content 
+        //For the content
         hammerContent.get('pinch').set({enable: false});
         hammerContent.get('swipe').set({enable: false});
 
-        //For hte button
+        //For the button
         hammerBtnDIRECTON.get('pinch').set({enable: false});
-        hammerBtnDIRECTON.get('swipe').set({enable: false});        
+        hammerBtnDIRECTON.get('swipe').set({enable: false});  
         hammerBtnUP.get('pinch').set({enable: false});
         hammerBtnUP.get('swipe').set({enable: false});
 
@@ -148,7 +148,7 @@ const setPlatform = () => {
         });
         
         //Setting up the fps for small ViewPort
-        setUpFor30Fps
+        setUpFor30Fps();
 
     } else {
         document.addEventListener("keydown", handleKeyDown);
@@ -241,7 +241,7 @@ const setUpFor30Fps = () => {
     game.entities.cloud.speed *= 2;
 
     itemTypes.forEach((e)=> {
-        e.fallSpeed *= 1.5;
+        e.fallSpeed = 3.5;
     });
 
 };
