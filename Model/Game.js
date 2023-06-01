@@ -19,7 +19,7 @@ class Game {
         lvl = 1;
         lvlUI.innerHTML = `Szint: ${lvl}`;
         //REset the maximum item number
-        maxItemNumber = 3;
+        maxItemNumber = 4;
         //Reset points
         points = this.points;
         pointsH3.innerHTML = `Pont: ${points}`;
@@ -112,7 +112,7 @@ const setPlatform = () => {
         let container = document.body;
         let modalContainer = document.querySelector(".modal");
         let contentContainer = document.querySelector(".box");
-        let btnContainer = document.querySelectorAll(".box .row");
+        let btnContainer = document.querySelectorAll(".box .row");        
 
 
         let hammer = new Hammer(container);

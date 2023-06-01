@@ -61,6 +61,9 @@ const pauseButton = document.getElementById("pause-button");
 const startBtn = document.getElementById("startBtn");
 
 const handleButtonPress = (event) => {
+  //PRevent zooming
+  event.preventDefault();
+
   const buttonId = event.target.id;
   
   event.target.classList.add("arrow-touched");
@@ -95,10 +98,19 @@ const handleButtonPress = (event) => {
     }        
     menu.toggle();
     //pauseButton.classList.remove("d-none");
-  }  
+  } 
+
+  // Prevent double-tap zooming on touch devices
+  /*if (event.touches.length > 1) {
+    event.preventDefault();
+  }*/
+
 }
 
 const handleButtonRelease = (event) => {
+  //Prevent zooming
+  event.preventDefault();
+
   const buttonId = event.target.id;
 
   event.target.classList.remove("arrow-touched");
@@ -112,10 +124,9 @@ const handleButtonRelease = (event) => {
   }
 
   // Prevent double-tap zooming on touch devices
-  /*
   if (event.touches.length > 1) {
     event.preventDefault();
-  }*/
+  }
 
 }
 
