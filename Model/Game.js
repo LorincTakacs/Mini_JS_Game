@@ -19,7 +19,7 @@ class Game {
         lvl = 1;
         lvlUI.innerHTML = `Szint: ${lvl}`;
         //REset the maximum item number
-        maxItemNumber = 4;
+        maxItemNumber = 3;
         //Reset points
         points = this.points;
         pointsH3.innerHTML = `Pont: ${points}`;
