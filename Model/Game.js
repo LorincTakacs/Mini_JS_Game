@@ -212,8 +212,8 @@ const preLoad = () => {
         //Set the platform if its smaller, resize
         setPlatform();                   
 
-        document.querySelector(".modal-title").innerHTML += ` | Width: ${window.innerWidth}`;
-        document.querySelector(".modal-title").innerHTML += ` | Height: ${window.innerHeight}`;
+        //document.querySelector(".modal-title").innerHTML += ` | Width: ${window.innerWidth}`;
+        //document.querySelector(".modal-title").innerHTML += ` | Height: ${window.innerHeight}`;
 
         //Set everything to basic
         game.reset();
