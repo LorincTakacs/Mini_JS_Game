@@ -14,7 +14,7 @@ const countDown = () => {
 
         if(document.getElementById("soundEffects").checked)  {
             let endSound = loaded.sounds.endGameAudio;
-            endSound.volume = document.getElementById("effectVolume").value / 100;
+            endSound.volume = document.getElementById("effectVolume").value * 0.01;
             endSound.play();
         }
         loaded.sounds.gameAudio.pause();
@@ -95,21 +95,23 @@ const endGameData = () => {
     endGameBox.classList.remove("d-none");
     title.innerHTML = `Játék vége!`;
 
+
+
     endGameBox.innerHTML = `
     <p>Elért eredmények:</p>
     <table class="table">
         <thead>
         <tr>                    
             <th scope="col">Szint</th>
-            <th scope="col">Pont</th>
-            <th scope="col">Következő szintig</th>
+            <th scope="col">Játék Pont</th>
+            <th scope="col">Verseny Pont</th>
         </tr>
         </thead>
         <tbody>
             <tr>
                 <th scope="row">${lvl}. szint</th>
                 <td>${points} pont</td>
-                <td>${pointTolvlUp - points} pont</td>
+                <td>${racePoints()} pont</td>
             </tr>       
         </tbody>
     </table>
@@ -127,4 +129,30 @@ const returnMenu = () => {
     helpBtn.classList.remove("d-none");    
     settingsBtn.classList.remove("d-none");
     title.innerHTML = `Energy Run | Főmenü`;
+};
+
+const racePoints = () => {    
+
+    /*
+    120 felett - 10 pont
+    110 - 119 - 9 pont
+    100 - 109 - 8 pont
+    90 - 99 - 7 pont
+    80 - 89 - 6 pont
+    70 - 79 - 5 pont
+    60 - 69 - 4 pont
+    50 - 59 - 3 pont
+    40 - 49 - 2 pont
+    30 - 39 - 1 pont
+    */
+   
+    let num = 0;
+
+    if(points > 30) {
+        num = (points - 30) * 0.1;
+        return (Math.floor(num + 1) > 10) ? 10 : Math.floor(num + 1);
+    } else {
+        return num;
+    }
+
 };
