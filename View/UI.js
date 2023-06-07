@@ -148,10 +148,10 @@ const racePoints = () => {
    
     let num = 0;
 
-    if(points > 30) {
+    if(points > 29) {
         num = (points - 30) * 0.1;
         return (Math.floor(num + 1) > 10) ? 10 : Math.floor(num + 1);
-    } else {
+    } else {        
         return num;
     }
 
